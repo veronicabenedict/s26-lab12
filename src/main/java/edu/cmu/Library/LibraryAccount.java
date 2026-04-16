@@ -14,8 +14,10 @@ public class LibraryAccount {
      */
     public Book[] getBooks(String userId) {
         String[] parts = userId.split(":");
-        String name = parts[0];
-        String id = parts[1];
+        // needed to switch id and name order
+        // because API doc says userID form is id:name
+        String id = parts[0]; 
+        String name = parts[1];
         return libraryService.getBooks(name, id);        
     }
 }

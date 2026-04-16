@@ -12,10 +12,12 @@ public class Manager {
      *        -2 if the path is invalid
      */
     public int newDirectory(String path) {
-        if (dirOps.checkDirectoryExists(path)) {
-            return -1;
-        } else if (!dirOps.checkPathValid(path)) {
+        // need to check if the path is valid first
+        // if the path int even valid, then it wouldnt exust so we check that first
+        if (!dirOps.checkPathValid(path)) {
             return -2;
+        } else if (dirOps.checkDirectoryExists(path)) {
+            return -1;
         } else {
             dirOps.createDirectory(path);
             return 0;
